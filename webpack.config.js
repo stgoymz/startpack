@@ -1,6 +1,6 @@
 const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCSSExtract = require('mini-css-extract-plugin');
 const fs = require('fs');
 
 const basePath = __dirname;
@@ -25,17 +25,72 @@ const htmlPlugins = generateHtmlPlugins('./src/templates/views');
 const webpackInitConfig = {
   mode: 'development',
   resolve: {
-    extensions: ['.js']
+    extensions: ['.js', '.ts']
   },
   entry: {
-    app: ['./src/index.js'],
+    app: ['@babel/polyfill', './src/index.ts'],
   },
   output: {
     path: path.join(basePath, distPath),
     filename: '[chunkhash][name].js'
   },
+  module: {
+    rules: [
+      {
+        test: /\.pug$/,
+        use: 'pug-loader'
+      },      
+      {
+        test: /\.js/,
+        exclude: /node_modules/,
+        use: [
+          'babel-loader',
+          'eslint-loader',
+        ]
+      },
+      {
+        test: /\.ts/,
+        exclude: /node_modules/,
+        use: ['ts-loader'],
+      },  
+      {
+        test: /\.css/,
+        exclude: /node_modules/,
+        use: [
+          MiniCSSExtract.loader,
+          'css-loader',
+          'postcss-loader',
+        ],
+      },
+      {
+        test: /\.scss/,
+        exclude: /node_modules/,
+        use: [
+          MiniCSSExtract.loader,
+          'css-loader',
+          'postcss-loader',
+          'sass-loader',
+        ],
+      },    
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              outputPath: 'assets/img/',
+              publicPath: 'assets/img/',
+            },
+          },
+        ],
+      },        
+    ]
+  },  
   plugins: [
-    // new ExtractTextPlugin('css/styles.css')
+    new MiniCSSExtract({
+      filename: '[name].css',
+      chunkFilename: '[id].css',
+    }),    
   ]  
   .concat(htmlPlugins)
 };
