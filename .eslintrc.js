@@ -18,6 +18,8 @@ module.exports = {
   plugins: [
     '@typescript-eslint',
   ],
-  rules: {
-  },
+	rules: {
+		"indent": [1, "tab"],
+		"no-tabs": 0
+	},
 };

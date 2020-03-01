@@ -1,0 +1,2 @@
+// resources
+import	'./main.scss';
