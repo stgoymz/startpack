@@ -1,3 +1,8 @@
-body{
-  background-color:lightblue;
-}
+/* Vars */
+@import 'scss/project/vars';
+/* functions */
+@import 'scss/project/mixins';
+/* Base */
+@import 'scss/project/reset';
+/* Utilities */
+@import 'scss/project/utilities';

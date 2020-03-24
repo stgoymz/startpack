@@ -2,6 +2,8 @@ const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const MiniCSSExtract = require('mini-css-extract-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
+const webpack = require('webpack');
+
 const fs = require('fs');
 
 const basePath = __dirname;
@@ -16,6 +18,7 @@ function generateHtmlPlugins(templateDir) {
 		return new HTMLWebpackPlugin({
 			filename: `${name}.html`,
 			template: path.resolve(__dirname, `${templateDir}/${name}.${extension}`),
+			minify: false,
 		});
 	});
 }
@@ -54,6 +57,10 @@ const webpackInitConfig = {
 				use: ['ts-loader'],
 			},
 			{
+				test: /\.(woff|woff2|eot|ttf|svg)$/,
+				use: ['url-loader?limit=100000'],
+			},
+			{
 				test: /\.css/,
 				exclude: /node_modules/,
 				use: [
@@ -68,8 +75,8 @@ const webpackInitConfig = {
 				use: [
 					MiniCSSExtract.loader,
 					{ loader: 'css-loader', options: { sourceMap: true } },
-					{ loader: 'postcss-loader', options: { sourceMap: true } },
 					{ loader: 'sass-loader', options: { sourceMap: true } },
+					{ loader: 'postcss-loader', options: { sourceMap: true } },
 				],
 			},
 			{
@@ -94,6 +101,10 @@ const webpackInitConfig = {
 		new CopyPlugin([
 			{ from: `${basePath}/src/assets`, to: 'assets' },
 		]),
+		new webpack.ProvidePlugin({
+			$: 'jquery',
+			jQuery: 'jquery',
+		}),
 	]
 		.concat(htmlPlugins),
 };
