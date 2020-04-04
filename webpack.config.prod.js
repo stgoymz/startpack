@@ -2,6 +2,7 @@ const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const MiniCSSExtract = require('mini-css-extract-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
+const webpack = require('webpack');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const fs = require('fs');
 
@@ -17,6 +18,7 @@ function generateHtmlPlugins(templateDir) {
 		return new HTMLWebpackPlugin({
 			filename: `${name}.html`,
 			template: path.resolve(__dirname, `${templateDir}/${name}.${extension}`),
+			minify: true,
 		});
 	});
 }
@@ -53,6 +55,10 @@ const webpackInitConfig = {
 				test: /\.ts/,
 				exclude: /node_modules/,
 				use: ['ts-loader'],
+			},
+			{
+				test: /\.(woff|woff2|eot|ttf|svg)$/,
+				use: ['url-loader?limit=100000'],
 			},
 			{
 				test: /\.css/,
@@ -95,7 +101,11 @@ const webpackInitConfig = {
 		new CopyPlugin([
 			{ from: `${basePath}/src/assets`, to: 'assets' },
 		]),
-		new OptimizeCssAssetsPlugin(),
+		new webpack.ProvidePlugin({
+			$: 'jquery',
+			jQuery: 'jquery',
+		}),
+    new OptimizeCssAssetsPlugin(),
 	]
 		.concat(htmlPlugins),
 };
