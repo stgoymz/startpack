@@ -3,14 +3,17 @@
 /* functions */
 @import 'scss/project/mixins';
 /* External*/
-// @import 'scss/project/override';
-// @import '~bootstrap/scss/bootstrap';
-// @import '~slick-carousel/slick/slick';
-// @import '~slick-carousel/slick/slick';
-// @import '~slick-carousel/slick/slick-theme';
+/*
+	@import 'scss/project/override';
+	@import '~bootstrap/scss/bootstrap';
+	@import '~slick-carousel/slick/slick';
+	@import '~slick-carousel/slick/slick';
+	@import '~slick-carousel/slick/slick-theme';
+*/
 /* Base */
 @import 'scss/project/reset';
 
 /* Components */
 /* Utilities */
+@import 'scss/project/icons';
 @import 'scss/project/utilities';

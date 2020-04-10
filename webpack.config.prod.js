@@ -57,8 +57,8 @@ const webpackInitConfig = {
 				use: ['ts-loader'],
 			},
 			{
-				test: /\.(woff|woff2|eot|ttf|svg)$/,
-				use: ['url-loader?limit=100000'],
+				test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/,
+				loader: 'file-loader',
 			},
 			{
 				test: /\.css/,
@@ -99,7 +99,11 @@ const webpackInitConfig = {
 			chunkFilename: '[id].css',
 		}),
 		new CopyPlugin([
-			{ from: `${basePath}/src/assets`, to: 'assets' },
+			{
+				from: `${basePath}/src/assets`,
+				to: 'assets',
+				ignore: ['icons/**/*'],
+			},
 		]),
 		new webpack.ProvidePlugin({
 			$: 'jquery',
