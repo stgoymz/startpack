@@ -1,0 +1,15 @@
+<?xml version="1.0" standalone="no"?> 
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
+<svg xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <font id="project-icons" horiz-adv-x="80">
+    <font-face font-family="project-icons"
+      units-per-em="64" ascent="64"
+      descent="0" />
+    <missing-glyph horiz-adv-x="0" />
+    <glyph glyph-name="burger"
+      unicode="&#xF101;"
+      horiz-adv-x="80" d=" M0 64.00003L0 52.00003L80 52.00003L80 64.00003L0 64.00003zM0 37.99991L0 25.99988L80 25.99988L80 37.99991L0 37.99991zM0 11.99998L0 -0.00002L80 -0.00002L80 11.99998L0 11.99998z" />
+  </font>
+</defs>
+</svg>

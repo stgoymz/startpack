@@ -20,10 +20,10 @@ const filesSvg = getIconsFilesSvg('./src/assets/icons');
 
 webfontsGenerator({
 	files: filesSvg,
-	dest: 'src/assets/fonts/icons',
+	dest: 'src/assets/fonts',
 	cssDest: 'src/scss/project/_icons.scss',
 	fontName: 'project-icons',
-	cssFontsUrl: 'assets/fonts/icons/',
+	cssFontsUrl: 'assets/fonts/',
 	types: ['eot', 'woff2', 'woff', 'ttf', 'svg'],
 	html: false,
 	templateOptions: {

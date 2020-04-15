@@ -1,19 +1,19 @@
 // Colors
 $white:#FFF;
 $black:#000;
-$color-first:#354857;
-$color-second:#D6C21F;
-$color-third:#006032;
-$color-text:$color-first;
-$color-bg:#F6F6F6;
+$color-first:#673ab7;
+$color-second:#9a67ea;
+$color-third:#320b86;
+$color-text:#333;
+$color-bg:#f5f5f6;
 
 // fonts
 $base_size:16px;
-$font_base:'Montserrat', sans-serif;
+$font_base:arial, sans-serif;
 
 // Common
 $transition-duration: .3s !default;
 
 // Margins & Paddings
-$numbers: 0, 10, 20, 30, 40, 50;
+$numbers: 0;
 $sides: t top,r right,b bottom,l left;

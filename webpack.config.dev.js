@@ -35,7 +35,7 @@ const webpackInitConfig = {
 	},
 	output: {
 		path: path.join(basePath, distPath),
-		filename: '[chunkhash][name].js',
+		filename: '[name].js',
 	},
 	module: {
 		rules: [
@@ -59,6 +59,9 @@ const webpackInitConfig = {
 			{
 				test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/,
 				loader: 'file-loader',
+				options: {
+					name: 'assets/fonts/[name].[ext]',
+				},
 			},
 			{
 				test: /\.css/,
@@ -85,6 +88,7 @@ const webpackInitConfig = {
 					{
 						loader: 'file-loader',
 						options: {
+							name: '[name].[ext]',
 							outputPath: 'assets/img/',
 							publicPath: 'assets/img/',
 						},

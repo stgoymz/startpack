@@ -1,0 +1,23 @@
+@font-face {
+	font-family: "project-icons";
+	src: url("assets/fonts/project-icons.eot?cdf9c490af4db84147ea33e6f9bb73f7?#iefix") format("embedded-opentype"),
+url("assets/fonts/project-icons.woff2?cdf9c490af4db84147ea33e6f9bb73f7") format("woff2"),
+url("assets/fonts/project-icons.woff?cdf9c490af4db84147ea33e6f9bb73f7") format("woff"),
+url("assets/fonts/project-icons.ttf?cdf9c490af4db84147ea33e6f9bb73f7") format("truetype"),
+url("assets/fonts/project-icons.svg?cdf9c490af4db84147ea33e6f9bb73f7#project-icons") format("svg");
+}
+
+.ico {
+	line-height: 1;
+}
+
+.ico:before {
+	font-family: project-icons !important;
+	font-style: normal;
+	font-weight: normal !important;
+	vertical-align: top;
+}
+
+.ico-burger:before {
+	content: "\f101";
+}
