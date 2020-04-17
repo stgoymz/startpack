@@ -41,7 +41,12 @@ const webpackInitConfig = {
 		rules: [
 			{
 				test: /\.pug$/,
-				use: 'pug-loader',
+				use: [{
+					loader: 'pug-loader',
+					options: {
+						pretty: true,
+					},
+				}],
 			},
 			{
 				test: /\.js/,
